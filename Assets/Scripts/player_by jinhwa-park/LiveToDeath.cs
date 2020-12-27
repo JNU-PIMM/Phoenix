@@ -4,38 +4,37 @@ using UnityEngine;
 
 public class LiveToDeath : MonoBehaviour
 {
-    public SpriteRenderer spriteRenderer;
-    public Sprite bsprite;
-    public Sprite dsprite;
+    public Sprite bsprite; // 살아있는거
+    public Sprite dsprite; // 죽은거
+    
+    public GameObject bAnim; // 살아있을때 animation
+    public GameObject dAnim; // 죽었을때 animation
 
     int whichAvatarIsOn = 1;
 
-    public bool Player_states;
+    public bool player_states;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        if (spriteRenderer.sprite == null)
-        {
-            spriteRenderer.sprite = bsprite;
-            Player_states = true;
-        }
-    }
+  
+    
 
-    public void SwitchSprite()
+    public void Switch()
     {
-        if(spriteRenderer.sprite == bsprite)
+        if(player_states == true)
         {
-            spriteRenderer.sprite = dsprite;
-            Player_states = false;
+            player_states = false;
             transform.gameObject.tag = "Untagged";
+
+            bAnim.SetActive(true);
+            dAnim.SetActive(false);
         }
         else
         {
-            spriteRenderer.sprite = bsprite;
-            Player_states = true;
+            player_states = true;
             transform.gameObject.tag = "Player";
+
+            bAnim.SetActive(false);
+            dAnim.SetActive(true);
         }
     }
 
@@ -44,7 +43,7 @@ public class LiveToDeath : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SwitchSprite();
+            Switch();
         }
     }
 }
