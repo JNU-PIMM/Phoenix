@@ -29,13 +29,16 @@ public class LiveToDeath : MonoBehaviour
         {
             spriteRenderer.sprite = dsprite;
             Player_states = false;
+            transform.gameObject.tag = "Untagged";
         }
         else
         {
             spriteRenderer.sprite = bsprite;
             Player_states = true;
+            transform.gameObject.tag = "Player";
         }
     }
+
     // Update is called once per frame
     void Update()
     {
