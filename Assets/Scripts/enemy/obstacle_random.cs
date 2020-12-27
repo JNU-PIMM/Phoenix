@@ -13,7 +13,7 @@ public class obstacle_random : MonoBehaviour
     void Update()
     {
     
-        RandomY = UnityEngine.Random.Range(2.7f, -2.1f);
+        RandomY = UnityEngine.Random.Range(2f, -1.2f);
 
         RandomPos = new Vector2(gameObject.transform.position.x , RandomY);
 
@@ -22,7 +22,7 @@ public class obstacle_random : MonoBehaviour
         if (timer <= 0.0f)
         {
             GameObject SpawnEnemy = Instantiate(pipe, RandomPos, Quaternion.identity);
-            timer = 2;
+            timer = 1.6f;
         }
 
     }

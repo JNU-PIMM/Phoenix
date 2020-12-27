@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tr: {fileID: 1139729107536417961}
-  speed: 5
+  speed: 3.05
 --- !u!50 &-4606027547882804492
 Rigidbody2D:
   serializedVersion: 4
