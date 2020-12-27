@@ -4,25 +4,39 @@ using UnityEngine;
 
 public class LiveToDeath : MonoBehaviour
 {
-    public GameObject live, death;
+    public SpriteRenderer spriteRenderer;
+    public Sprite bsprite;
+    public Sprite dsprite;
 
     int whichAvatarIsOn = 1;
 
+    public bool Player_states;
 
     // Start is called before the first frame update
     void Start()
     {
-        live.gameObject.SetActive(true);
-        death.gameObject.SetActive(false);
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        if (spriteRenderer.sprite == null)
+            spriteRenderer.sprite = bsprite;
     }
 
-    public void SwitchAvatar()
+    public void SwitchSprite()
     {
-//       switch (whi)
+        if(spriteRenderer.sprite == bsprite)
+        {
+            spriteRenderer.sprite = dsprite;
+        }
+        else
+        {
+            spriteRenderer.sprite = bsprite;
+        }
     }
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SwitchSprite();
+        }
     }
 }
