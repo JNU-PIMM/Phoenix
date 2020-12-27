@@ -7,12 +7,17 @@ public class Score : MonoBehaviour
 {
     public Text scoreText;
     public int score;
+    public int bestScore;
     public int addedScore;
+    public Text endScoreText;
+    public Text bestScoreText;
     // Start is called before the first frame update
     void Start()
     {
         score = 0;
         FindObjectOfType<GameManager>().playingEvent += ScoreUp;
+        FindObjectOfType<GameManager>().overEvent += OverEvent;
+        FindObjectOfType<GameManager>().restartEvent += RestartEvent;
     }
 
     // Update is called once per frame
@@ -25,5 +30,18 @@ public class Score : MonoBehaviour
     void ScoreUp()
     {
         addedScore = 1;
+    }
+    void OverEvent()
+    {
+        addedScore = 0;
+        if (score > bestScore)
+            bestScore = score;
+        bestScoreText.text = bestScore.ToString();
+        endScoreText.text = score.ToString();
+    }
+
+    void RestartEvent()
+    {
+        score = 0;
     }
 }

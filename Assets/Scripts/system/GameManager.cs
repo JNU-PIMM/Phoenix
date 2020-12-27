@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     }
     public GameStatus gameStatus;
     public Action playingEvent;
+    public Action overEvent;
+    public Action restartEvent;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +26,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Q))
+            GameOver();
     }
     public void OnClickStart()
     {
@@ -32,5 +35,20 @@ public class GameManager : MonoBehaviour
         playingEvent?.Invoke();
         panels.startPanel.SetActive(false);
         panels.playingPanel.SetActive(true);
+    }
+
+    public void GameOver()
+    {
+        gameStatus = GameStatus.over;
+        overEvent?.Invoke();
+        panels.overPanel.SetActive(true);
+        panels.playingPanel.SetActive(false);
+    }
+    public void OnClickRestart()
+    {
+        gameStatus = GameStatus.start;
+        restartEvent?.Invoke();
+        panels.overPanel.SetActive(false);
+        panels.startPanel.SetActive(true);
     }
 }
