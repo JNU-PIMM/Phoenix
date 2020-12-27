@@ -17,7 +17,10 @@ public class LiveToDeath : MonoBehaviour
     {
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         if (spriteRenderer.sprite == null)
+        {
             spriteRenderer.sprite = bsprite;
+            Player_states = true;
+        }
     }
 
     public void SwitchSprite()
@@ -25,10 +28,12 @@ public class LiveToDeath : MonoBehaviour
         if(spriteRenderer.sprite == bsprite)
         {
             spriteRenderer.sprite = dsprite;
+            Player_states = false;
         }
         else
         {
             spriteRenderer.sprite = bsprite;
+            Player_states = true;
         }
     }
     // Update is called once per frame
