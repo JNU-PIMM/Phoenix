@@ -6,8 +6,13 @@ public class obstacle_move : MonoBehaviour
 {
     public Transform tr;
     public float speed = 1f;
-
+    public Gauge gauge;
+    public float damage;
     // Start is called before the first frame update
+    void Start()
+    {
+        gauge = FindObjectOfType<Gauge>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -22,7 +27,7 @@ public class obstacle_move : MonoBehaviour
     {
         if(col.CompareTag("Player"))
         {
-
+            gauge.currentGauge -= damage;
         }
     }
     
