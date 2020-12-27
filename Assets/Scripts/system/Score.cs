@@ -12,6 +12,7 @@ public class Score : MonoBehaviour
     void Start()
     {
         score = 0;
+        FindObjectOfType<GameManager>().playingEvent += ScoreUp;
     }
 
     // Update is called once per frame
@@ -21,5 +22,8 @@ public class Score : MonoBehaviour
         score += addedScore;
     }
 
-    
+    void ScoreUp()
+    {
+        addedScore = 1;
+    }
 }
